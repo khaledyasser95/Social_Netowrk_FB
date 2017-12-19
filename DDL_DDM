@@ -1,0 +1,75 @@
+create DATABASE social_network;
+use social_network;
+
+CREATE TABLE sn_users(
+  	  	user_id int Auto_Increment,
+		Fname varchar(50)  not null,
+		Lname varchar(50)  not null,
+		PRIMARY key(user_id),
+   		Nickname varchar(50) ,
+   		email varchar(32) unique not null,
+        password varchar(32) not null,
+        Gender varchar(32) not null,
+        Birthdate varchar(32) not null,
+        Profile_Picture varchar(32),
+        Hometown varchar(32),
+        Martial_Status varchar(32),
+        About_me varchar(32),
+        registeration_date TIMESTAMP(6) not null
+
+    );
+
+	Create Table Users(
+		user_id int Auto_Increment,
+		email varchar(32) unique not null,
+		username varchar(32) unique not null,
+        password varchar(32) not null,
+        registeration_date TIMESTAMP(6) not null,
+		department_id int,
+		PRIMARY key(user_id),
+		Foreign key(department_id) REFERENCES Department(dept_id)
+	);
+Create Table Course(
+		course_id int Auto_Increment,
+		course_name varchar(32) unique not null,
+		course_description varchar(32)  null,
+        instructor_name varchar(32) not null,
+        credit_hours int(10) not null,
+		department_id int,
+		PRIMARY key(course_id),
+		Foreign key(department_id) REFERENCES Department(dept_id)
+	);
+
+	INSERT into Department (name) values ("Computer and Communication");
+	INSERT into Department (name) values ("Electromechanics");
+	INSERT into Department (name) values ("OffShore");
+	INSERT into Department (name) values ("Architecture and Construction");
+	INSERT into Department (name) values ("Petrochemical");
+    
+    INSERT into course (`course_name`, `instructor_name`, `credit_hours`, `department_id`) values ("Programming","Yasser Foad","3","1");
+    INSERT into course (`course_name`, `instructor_name`, `credit_hours`, `department_id`) values ("Database","Yasser Foad","4","1");
+    INSERT into course (`course_name`, `instructor_name`, `credit_hours`, `department_id`) values ("Logic","Magdy","3","1");
+    INSERT into course (`course_name`, `instructor_name`, `credit_hours`, `department_id`) values ("System Programming","Ashraf","3","1");
+    INSERT into course (`course_name`, `instructor_name`, `credit_hours`, `department_id`) values ("PLT","Khaled Yasser","4","1");
+
+    INSERT into course (`course_name`, `instructor_name`, `credit_hours`, `department_id`) values ("Fluid","Mohamed Foad","3","2");
+    INSERT into course (`course_name`, `instructor_name`, `credit_hours`, `department_id`) values ("Machinery","Yasser Mohy","4","2");
+    INSERT into course (`course_name`, `instructor_name`, `credit_hours`, `department_id`) values ("Fluid 2","Yasser","3","2");
+    INSERT into course (`course_name`, `instructor_name`, `credit_hours`, `department_id`) values ("Combustion","Ashraf","3","2");
+
+    INSERT into course (`course_name`, `instructor_name`, `credit_hours`, `department_id`) values ("Drill","Mahmoud","3","3");
+    INSERT into course (`course_name`, `instructor_name`, `credit_hours`, `department_id`) values ("Extract","xx","4","3");
+    INSERT into course (`course_name`, `instructor_name`, `credit_hours`, `department_id`) values ("Fuse 2","zz","3","3");
+    INSERT into course (`course_name`, `instructor_name`, `credit_hours`, `department_id`) values ("Seko","aa","3","3");
+ 	
+ 	INSERT into course (`course_name`, `instructor_name`, `credit_hours`, `department_id`) values ("Drawing","Mahmoud","3","4");
+    INSERT into course (`course_name`, `instructor_name`, `credit_hours`, `department_id`) values ("Design","xx","4","4");
+    INSERT into course (`course_name`, `instructor_name`, `credit_hours`, `department_id`) values ("Photoshop 2","zz","3","4");
+    INSERT into course (`course_name`, `instructor_name`, `credit_hours`, `department_id`) values ("Graph","aa","3","4");
+ 
+
+    INSERT into course (`course_name`, `instructor_name`, `credit_hours`, `department_id`) values ("Water","Mahmoud","3","5");
+    INSERT into course (`course_name`, `instructor_name`, `credit_hours`, `department_id`) values ("Petrol","xx","4","5");
+    INSERT into course (`course_name`, `instructor_name`, `credit_hours`, `department_id`) values ("7amo el ola","zz","3","5");
+    INSERT into course (`course_name`, `instructor_name`, `credit_hours`, `department_id`) values ("Bomb","aa","3","5");
+ 
