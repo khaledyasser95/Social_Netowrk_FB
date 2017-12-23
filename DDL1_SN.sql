@@ -1,5 +1,5 @@
-create DATABASE social_network;
-use social_network;
+create DATABASE social_net;
+use social_net;
 
 CREATE TABLE sn_users(
   	  	user_id int Auto_Increment,
@@ -21,7 +21,8 @@ CREATE TABLE sn_users(
 CREATE TABLE Friend_Request(
 user_id int NOT NULL ,
 friendid int NOT NULL ,
-PRIMARY KEY (user_id,friendid),
+request_id int Auto_Increment,
+PRIMARY KEY (request_id),
 FOREIGN KEY(user_id) REFERENCES sn_users(user_id),
 FOREIGN KEY(friendid) REFERENCES sn_users(user_id)
 );
@@ -29,7 +30,8 @@ FOREIGN KEY(friendid) REFERENCES sn_users(user_id)
 CREATE TABLE Friends(
 user_id1 int NOT NULL ,
 user_id2 int NOT NULL ,
-PRIMARY KEY (user_id1,user_id2),
+friends_id int Auto_Increment,
+PRIMARY KEY (friends_id),
 FOREIGN KEY(user_id1) REFERENCES sn_users(user_id),
 FOREIGN KEY(user_id2) REFERENCES sn_users(user_id)
 );
@@ -39,6 +41,8 @@ post_id int Auto_Increment,
 user_id int NOT NULL,
 pic varchar(50),
 post varchar(140),
+Time TIMESTAMP(6) NOT NULL,
+IsPublic int(1) NOT NULL,
 PRIMARY KEY (post_id),
 FOREIGN KEY(user_id) REFERENCES sn_users(user_id)
 );
@@ -46,24 +50,19 @@ FOREIGN KEY(user_id) REFERENCES sn_users(user_id)
 CREATE TABLE Likes(
 post_id int NOT NULL,
 user_id int NOT NULL,
-PRIMARY KEY (post_id,user_id),
+likeid int Auto_Increment,
+PRIMARY KEY (likeid),
 FOREIGN KEY(post_id) REFERENCES Posts(post_id),
 FOREIGN KEY(user_id) REFERENCES sn_users(user_id)
 );
 
-CREATE TABLE Comments(
-post_id int NOT NULL,
-user_id int NOT NULL,
-comment varchar(140),
-PRIMARY KEY (post_id,user_id),
-FOREIGN KEY(post_id) REFERENCES Posts(post_id),
-FOREIGN KEY(user_id) REFERENCES sn_users(user_id)
-);
 
 CREATE TABLE Phone_numbers(
 user_id int NOT NULL,
 ph_no varchar(50),
-PRIMARY KEY (user_id),
+id_keys int Auto_Increment,
+type varchar(20),
+PRIMARY KEY (id_keys),
 FOREIGN KEY(user_id) REFERENCES sn_users(user_id)
 );
 
